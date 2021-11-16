@@ -3,6 +3,7 @@ import Router from 'vue-router'
 // 导入刚才编写的组件
 import Login from '@/components/Login'
 import AppIndex from '@/components/home/AppIndex'
+import register from "../components/register";
 Vue.use(Router)
 
 export default new Router({
@@ -16,6 +17,12 @@ export default new Router({
       path: '/index',
       name: 'AppIndex',
       component: AppIndex
+
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: register
 
     }
   ]

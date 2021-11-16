@@ -17,6 +17,7 @@ module.exports = {
         pathRewrite: {
           '^/api': ''
         }
+      //  网页跳转
       }
     },
 
@@ -27,7 +28,7 @@ module.exports = {
     errorOverlay: true,
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
-
+    //运行网页端口
 
     /**
      * Source Maps
