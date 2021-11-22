@@ -15,7 +15,7 @@
       <el-input type="text"
                 v-model="loginForm.username"
                 auto-complete="off"
-                placeholder="账号">
+                placeholder="请填写账号">
         <i slot="prefix" class="el-icon-user"></i>
 <!--        slot插槽-->
 <!--        icon语句为ele的图标组件-->
@@ -29,7 +29,7 @@
 <!--    输入密码栏-->
     <el-form-item>
       <el-input type="password" v-model="loginForm.password"
-                auto-complete="off" placeholder="密码"
+                auto-complete="off" placeholder="请填写密码"
                 @keyup.enter.native="handleLogin">
         <i slot="prefix" class="el-icon-unlock"></i>
       </el-input>
@@ -64,7 +64,7 @@
       </el-button>
     </el-form-item>
   <el-form-item style="width: 100%">
-  <a href="/register" class="Register">注册</a>
+      <a herf="/register" class="Register">注册</a>
 <!--      增加跳转注册页面的功能-->
     </el-form-item>
   </el-form>
@@ -79,18 +79,38 @@
     export default {
         name: "login",
       data(){
-          return{
-            codeUrl:'',
-            cookiePass:'',
-            loginForm:{
-              username:'',
-              password:'',
-            //数据处理
+          return {
+            codeUrl: '',
+            cookiePass: '',
+            loginForm: {
+              username: '',
+              password: '',
+              //数据处理
               rememberMe: false,
-              code:'',
-              uuid:''
+              code: '',
+              uuid: ''
             },
-            responseResult:[]
+            loginRules:{
+              username: [
+                {required:true,tigger:'blur',message:'用户名不能为空'}
+              ],
+              //表单验证触发 'change'数据改变时触发 'blur'失去焦点时触发
+              password:[
+                { required:'true',tigger:'blur',message:'密码不能为空'}
+              ],
+              code:[
+                {required:'true',tigger:'change',message:'验证码不能为空'}
+              ]
+            },
+            loading:false,
+            redirect:undefined
+          }
+      },
+      watch:{
+          $route:{
+            handler:function (route) {
+                 this.redirect=route.query && route.query.redirect
+            }
           }
       },
       methods:{
