@@ -64,7 +64,7 @@
       </el-button>
     </el-form-item>
   <el-form-item style="width: 100%">
-<!--      <a href="/register" class="register">注册</a>-->
+  <a href="/register" class="Register">注册</a>
 <!--      增加跳转注册页面的功能-->
     </el-form-item>
   </el-form>
