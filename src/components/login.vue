@@ -40,7 +40,7 @@
          auto-complete="off"
          placholder="验证码"
          style="width: 63%"
-         @keyup.enter.native="handleLogin"
+       @keyup.enter.native="handleLogin"
        >
 <!--         svg-icon图标集-->
 <!--         <i slot="prefix" class="el-icon-discount"></i>-->
@@ -63,8 +63,8 @@
 <!--        增加一个loading的状态-->
       </el-button>
     </el-form-item>
-  <el-form-item style="width: 100%">
-      <a herf="/register" class="Register">注册</a>
+  <el-form-item style="text-align: right; width: 100%">
+    <el-link @click="gotoRegister()">没有注册？</el-link>
 <!--      增加跳转注册页面的功能-->
     </el-form-item>
   </el-form>
@@ -80,11 +80,9 @@
         name: "login",
       data(){
           return {
-            codeUrl: '',
-            cookiePass: '',
             loginForm: {
-              username: '',
-              password: '',
+              username: 'admin',
+              password: 'admin123',
               //数据处理
               rememberMe: false,
               code: '',
@@ -114,12 +112,14 @@
           }
       },
       methods:{
+          gotoRegister:function(){
+            this.$router.push({
+              name:'Register'
+            })
+          },
         login: function () {
           this.$axios
-            .post('/login', {
-              username: this.loginForm.username,
-              password: this.loginForm.password
-            })
+            .post('http://118.31.250.71:8428/login', )
             .then(successResponse => {
               if (successResponse.data.code===200){
                 this.$router.replace({path:'/index'})

@@ -1,18 +1,16 @@
 <template>
 <div class="page-register">
-  <article class="header">
-    <header>
-      <el-avatar icon="el-icon-user-solid" shape="circle">
-        <span class="login">
-          <em class="bold">已有账号？</em>
-          <a herf="/login" class="Login">
-           <el-button type="primary" size="small">登录</el-button>
-          </a>>
-        </span>
-      </el-avatar>
-    </header>
-  </article>
-
+  <el-form class="login-container">
+    <h1 class="title">用户注册</h1>
+    <el-form-item label="">
+      <el-input type="text"
+                aria-placeholder="请输入用户名"
+                v-model="username" autocomplete="off"></el-input>
+    </el-form-item>
+    <el-form-item label="">
+      <el-input type="password" aria-placeholder="请输入密码"></el-input>
+    </el-form-item>
+  </el-form>
 </div>
 </template>
 
